@@ -12,19 +12,6 @@ class Profile extends Component {
     }
 
   componentDidMount() {
-      let header = new Headers ({"Content-Type":"application/json", "Authorization":"token 5730ec92397c6c659c74e0fe446a11b366fc949e"});
-    fetch('https://api.github.com/users/sunsnba', {
-        method: 'GET',
-        headers: header  
-      })
-      .then(response => response.json())
-      .then(json => {
-          console.log(json);
-          this.setState ({
-            userInfo: json
-          })
-      })
-      .catch(error => console.log(error));
     }
   
 

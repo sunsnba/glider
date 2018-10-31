@@ -1,6 +1,6 @@
 import {
     PROFILE_FETCHED
-  } from '../actions/actions_info'
+  } from '../actions/actions_profile'
   
   const profile = (state = {}, action) => {
     switch (action.type) {

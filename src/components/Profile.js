@@ -15,6 +15,9 @@ class Profile extends Component {
     this.props.fetchProfile();
     }
   
+    componentWillReceiveProps(nextProps) {
+      this.setState({userInfo:nextProps.profile})
+    }
 
     updateValue (type, event) {
         var userInfoCopy = JSON.parse(JSON.stringify(this.state.userInfo));
@@ -32,38 +35,38 @@ class Profile extends Component {
             <ControlLabel>Scott</ControlLabel>
             <FormControl
               type="text"
-              value={this.props.profile.name}
+              value={this.state.userInfo.name}
               placeholder="Enter text"
               onChange={this.updateValue.bind(this, 'name')}
             />
             <ControlLabel>Bio</ControlLabel>
             <FormControl
               type="text"
-              value={this.props.profile.bio}
+              value={this.state.userInfo.bio}
               placeholder="Enter text"
               onChange={this.updateValue.bind(this, 'bio')}
             />
             <ControlLabel>Location</ControlLabel>
             <FormControl
               type="text"
-              value={this.props.profile.location}
+              value={this.state.userInfo.location}
               placeholder="Enter text"
               onChange={this.updateValue.bind(this, 'location')}
             />
             <ControlLabel>Company</ControlLabel>
             <FormControl
               type="text"
-              value={this.props.profile.company}
+              value={this.state.userInfo.company}
               placeholder="Enter text"
               onChange={this.updateValue.bind(this, 'company')}
             />
           </FormGroup>
             : 
         <div>
-        <p><strong>Name: </strong> {this.props.profile.name}</p>
-        <p><strong>Bio: </strong> {this.props.profile.bio}</p>
-        <p><strong>Location: </strong> {this.props.profile.location}</p>
-        <p><strong>Company: </strong> {this.props.profile.company}</p>
+        <p><strong>Name: </strong> {this.state.userInfo.name}</p>
+        <p><strong>Bio: </strong> {this.state.userInfo.bio}</p>
+        <p><strong>Location: </strong> {this.state.userInfo.location}</p>
+        <p><strong>Company: </strong> {this.state.userInfo.company}</p>
         </div>
         }
 

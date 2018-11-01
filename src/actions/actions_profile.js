@@ -3,7 +3,7 @@ export const PROFILE_EDITED = 'PROFILE_EDITED';
 
 export function fetchProfile() {
   return (dispatch) => {
-    let header = new Headers ({"Content-Type":"application/json", "Authorization":"token 5730ec92397c6c659c74e0fe446a11b366fc949e"});
+    let header = new Headers ({"Content-Type":"application/json", "Authorization":"token ff51fe63abd66bbb9f3646a869d4f0160e262c59"});
     return fetch('https://api.github.com/users/sunsnba', {
         method: 'GET',
         headers: header  

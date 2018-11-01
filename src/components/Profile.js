@@ -12,6 +12,7 @@ class Profile extends Component {
     }
 
   componentDidMount() {
+    this.props.fetchProfile();
     }
   
 
@@ -31,38 +32,38 @@ class Profile extends Component {
             <ControlLabel>Scott</ControlLabel>
             <FormControl
               type="text"
-              value={this.state.userInfo.name}
+              value={this.props.profile.name}
               placeholder="Enter text"
               onChange={this.updateValue.bind(this, 'name')}
             />
             <ControlLabel>Bio</ControlLabel>
             <FormControl
               type="text"
-              value={this.state.userInfo.bio}
+              value={this.props.profile.bio}
               placeholder="Enter text"
               onChange={this.updateValue.bind(this, 'bio')}
             />
             <ControlLabel>Location</ControlLabel>
             <FormControl
               type="text"
-              value={this.state.userInfo.location}
+              value={this.props.profile.location}
               placeholder="Enter text"
               onChange={this.updateValue.bind(this, 'location')}
             />
             <ControlLabel>Company</ControlLabel>
             <FormControl
               type="text"
-              value={this.state.userInfo.company}
+              value={this.props.profile.company}
               placeholder="Enter text"
               onChange={this.updateValue.bind(this, 'company')}
             />
           </FormGroup>
             : 
         <div>
-        <p><strong>Name: </strong> {this.state.userInfo.name}</p>
-        <p><strong>Bio: </strong> {this.state.userInfo.bio}</p>
-        <p><strong>Location: </strong> {this.state.userInfo.location}</p>
-        <p><strong>Company: </strong> {this.state.userInfo.company}</p>
+        <p><strong>Name: </strong> {this.props.profile.name}</p>
+        <p><strong>Bio: </strong> {this.props.profile.bio}</p>
+        <p><strong>Location: </strong> {this.props.profile.location}</p>
+        <p><strong>Company: </strong> {this.props.profile.company}</p>
         </div>
         }
 

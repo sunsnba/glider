@@ -7,7 +7,8 @@ class Profile extends Component {
         super (props);
         this.state = {
             userInfo: {},
-            editing: false
+            editing: false,
+            error: false
         }
     }
 
@@ -23,6 +24,20 @@ class Profile extends Component {
         var userInfoCopy = JSON.parse(JSON.stringify(this.state.userInfo));
         userInfoCopy[type] = event.target.value;
         this.setState ({userInfo:userInfoCopy})
+    }
+
+    saveProfile() {
+      var error = false;
+      var propertiesToCheck = ['name', 'bio', 'location', 'company'];
+      propertiesToCheck.forEach(function(term) {
+        if(userInfo[term]=== '') {
+          error = true;
+        }
+      });
+      if(!error) {
+          //save profile
+      }
+      this.setState({error});
     }
 
   render() {
@@ -60,6 +75,7 @@ class Profile extends Component {
               placeholder="Enter text"
               onChange={this.updateValue.bind(this, 'company')}
             />
+            <Button bsStyle="info" onClick={this.saveProfile.bind(this)}>Save</Button>
           </FormGroup>
             : 
         <div>

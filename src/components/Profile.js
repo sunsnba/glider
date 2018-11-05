@@ -6,7 +6,7 @@ class Profile extends Component {
     constructor(props) {
         super (props);
         this.state = {
-            userInfo: {},
+            userInfo: this.props.profile,
             editing: false,
             error: false
         }
@@ -30,12 +30,12 @@ class Profile extends Component {
       var error = false;
       var propertiesToCheck = ['name', 'bio', 'location', 'company'];
       propertiesToCheck.forEach(function(term) {
-        if(userInfo[term]=== '') {
+        if(this.state.userInfo[term]=== '') {
           error = true;
         }
-      });
+      }.bind(this));
       if(!error) {
-          //save profile
+          this.props.saveProfile(this.state.userInfo);
       }
       this.setState({error});
     }
@@ -45,11 +45,13 @@ class Profile extends Component {
         <div className="Container">
         <Button bsStyle="primary" onClick={() => this.setState({editing: !this.state.editing})}>Edit</Button>
         <hr />
+
         {this.state.editing ? 
             <FormGroup >
             <ControlLabel>Scott</ControlLabel>
             <FormControl
               type="text"
+              className={this.state.error && this.state.userInfo.name === '' ? 'red-border' : ''} 
               value={this.state.userInfo.name}
               placeholder="Enter text"
               onChange={this.updateValue.bind(this, 'name')}
@@ -57,6 +59,7 @@ class Profile extends Component {
             <ControlLabel>Bio</ControlLabel>
             <FormControl
               type="text"
+              className={this.state.error && this.state.userInfo.bio === '' ? 'red-border' : ''} 
               value={this.state.userInfo.bio}
               placeholder="Enter text"
               onChange={this.updateValue.bind(this, 'bio')}
@@ -64,6 +67,7 @@ class Profile extends Component {
             <ControlLabel>Location</ControlLabel>
             <FormControl
               type="text"
+              className={this.state.error && this.state.userInfo.location === '' ? 'red-border' : ''} 
               value={this.state.userInfo.location}
               placeholder="Enter text"
               onChange={this.updateValue.bind(this, 'location')}
@@ -71,6 +75,7 @@ class Profile extends Component {
             <ControlLabel>Company</ControlLabel>
             <FormControl
               type="text"
+              className={this.state.error && this.state.userInfo.company === '' ? 'red-border' : ''} 
               value={this.state.userInfo.company}
               placeholder="Enter text"
               onChange={this.updateValue.bind(this, 'company')}

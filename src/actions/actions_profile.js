@@ -3,10 +3,26 @@ export const PROFILE_EDITED = 'PROFILE_EDITED';
 
 export function fetchProfile() {
   return (dispatch) => {
-    let header = new Headers ({"Content-Type":"application/json", "Authorization":"token ff51fe63abd66bbb9f3646a869d4f0160e262c59"});
+    let header = new Headers ({"Content-Type":"application/json", "Authorization":"token c985e4d17a2f1b9307f9611904cc11ad602be614"});
     return fetch('https://api.github.com/users/sunsnba', {
         method: 'GET',
         headers: header  
+    })
+    .then(response => response.json())
+    .then(json => {
+      dispatch(loadProfile(json))
+    })
+    .catch(error => console.log(error));
+  }
+}
+
+export function saveProfile(profile) {
+  return (dispatch) => {
+    let header = new Headers ({"Content-Type":"application/json", "Authorization":"token c985e4d17a2f1b9307f9611904cc11ad602be614"});
+    return fetch('https://api.github.com/user', {
+        method: 'PATCH',
+        headers: header,
+        body: JSON.stringify(profile)  
     })
     .then(response => response.json())
     .then(json => {

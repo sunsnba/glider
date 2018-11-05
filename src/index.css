@@ -7,3 +7,7 @@ body {
 .slick-slider {
   text-align: center;
 }
+
+.red-border {
+  border: red thin solid
+}
